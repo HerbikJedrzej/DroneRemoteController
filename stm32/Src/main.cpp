@@ -13,7 +13,7 @@
 #include <Directory.hh>
 #include <BatteryTuner.hh>
 #include <PrintRadioData.hh>
-#include <SelectTrybe.hh>
+#include <SelectMode.hh>
 #include <SetPIDparams.hh>
 #include <SetAngleOffset.hh>
 #include <SetPercentValue.hh>
@@ -82,11 +82,11 @@ int main(void)
   Drivers::nRF24HalfDuplex radio(7, 0b10101110, Drivers::time, initMode, &Drivers::spi2, &Drivers::gpio, OutputList::RadioCE, OutputList::RadioCSN, InterruptInputList::RadioIRQ, HAL_Delay);
   Drivers::Memory memory(&Drivers::i2c1, &Drivers::gpio, 0xA0, OutputList::MemoryWriteProtect, HAL_Delay);
   BatteryObserver battery(&memory, adcData[ADClist::battery], Drivers::time, HAL_Delay);
-  Drivers::RadioParser radioParser(&radio, Drivers::RadioTrybe::RemoteControl);
+  Drivers::RadioParser radioParser(&radio, Drivers::RadioMode::RemoteControl);
   {
     root->add(CreateBatteryScreenDirectory(root, (LCD_ifc*)&lcd, &battery, &radioParser));
     root->add(CreateSetPIDsParams(root, (LCD_ifc*)&lcd, &radioParser, &memory));
-    root->add(new SelectTrybe((LCD_ifc*)&lcd, &radioParser, &memory));
+    root->add(new SelectMode((LCD_ifc*)&lcd, &radioParser, &memory));
     root->add(CreateMeasurementsAltitudeScreenDirectory(root, (LCD_ifc*)&lcd, &radioParser, altitudeMeasurementsTrigger, Drivers::time));
     root->add(CreateMeasurementsPIDScreenDirectory(root, (LCD_ifc*)&lcd, &radioParser, &memory, Drivers::time));
     root->add(new PrintRadioData((LCD_ifc*)&lcd, &radio, &radioParser));

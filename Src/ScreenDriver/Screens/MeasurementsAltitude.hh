@@ -4,7 +4,7 @@
 #include "MeasurementsAltitude.hh"
 #include "TreeCell.hh"
 #include <RadioParser.hh>
-#include <SelectTrybe.hh>
+#include <SelectMode.hh>
 
 /*
 Interface of radio data:
@@ -23,7 +23,7 @@ class SendOrCollectRecords : public ScreenCellIfc{
 	Drivers::RadioParser* radio;
 	unsigned int& time;
 	const bool modeSender; 
-	SelectTrybe* trybe;
+	SelectMode* mode;
 	bool& triggerButton;
 	const unsigned int duration;
 	unsigned int endTime;

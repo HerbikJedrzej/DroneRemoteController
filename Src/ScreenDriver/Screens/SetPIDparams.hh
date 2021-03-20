@@ -5,7 +5,7 @@
 #include <RadioParser.hh>
 #include <AT24C.hh>
 #include <memoryMap.hh>
-#include <SelectTrybe.hh>
+#include <SelectMode.hh>
 
 /*
 Interface of radio data:

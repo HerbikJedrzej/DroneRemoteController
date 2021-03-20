@@ -22,7 +22,7 @@ list(APPEND LOCAL_SOURCE_PATHS
   ScreenDriver/Screens/MeasurementsAltitude.cpp
   ScreenDriver/Screens/MeasurementsPID.cpp
   ScreenDriver/Screens/PrintRadioData.cpp
-  ScreenDriver/Screens/SelectTrybe.cpp
+  ScreenDriver/Screens/SelectMode.cpp
   ScreenDriver/Screens/SetAngleOffset.cpp
   ScreenDriver/Screens/SetPercentValue.cpp
   ScreenDriver/Screens/SetPIDparams.cpp

@@ -19,7 +19,7 @@ enum memoryMap{
 	// END adcRezistors 0x0011
 
 	// BEGIN Measurements of math model 0x0012
-		trybeOfMainloop = 0x0012,
+		modeOfMainloop = 0x0012,
 		slot_1_sinusAmplitude,
 		slot_1_sinusFrequency,
 		slot_2_sinusAmplitude,

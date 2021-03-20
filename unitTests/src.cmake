@@ -7,7 +7,7 @@ list(APPEND TESTS_SRC
   ScreenDriver/Screens/Directory_test.cpp
   ScreenDriver/Screens/LCDforScreenTesting.cpp
   ScreenDriver/Screens/MeasurementsPID_test.cpp
-  ScreenDriver/Screens/SelectTrybe_test.cpp
+  ScreenDriver/Screens/SelectMode_test.cpp
   ScreenDriver/Screens/SetAngleOffset_test.cpp
   ScreenDriver/Screens/SetPercentValue_test.cpp
   ScreenDriver/Screens/SetPIDparams_test.cpp

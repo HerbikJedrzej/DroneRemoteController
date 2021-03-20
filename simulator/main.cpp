@@ -14,7 +14,7 @@
 #include <Visualizer.hh>
 #include <BatteryTuner.hh>
 #include <PrintRadioData.hh>
-#include <SelectTrybe.hh>
+#include <SelectMode.hh>
 #include <SetPIDparams.hh>
 #include <SetAngleOffset.hh>
 #include <SetPercentValue.hh>
@@ -57,13 +57,13 @@ int main(){
   std::vector<uint8_t> radioData = {0xde, 255, 12, 51, 23, 0x34, 12, 0x55};
   Drivers::RadioSimulator radio(0x46, Drivers::timerCounts, radioData, "/tmp/radioStream");
   BatteryObserver battery(&memory, batteryValue, Drivers::timerCounts, HAL_Delay);
-  Drivers::RadioParser radioParser(&radio, Drivers::RadioTrybe::RemoteControl);
+  Drivers::RadioParser radioParser(&radio, Drivers::RadioMode::RemoteControl);
   TreeCell<ScreenCellIfc>* root = new TreeCell<ScreenCellIfc>(nullptr, nullptr);
   {
     root->add(CreateMeasurementsAltitudeScreenDirectory(root, (LCD_ifc*)&lcd, &radioParser, altitudeMeasurementsTrigger, Drivers::timerCounts));
     root->add(CreateBatteryScreenDirectory(root, &lcd, &battery, &radioParser));
     root->add(CreateSetPIDsParams(root, &lcd, &radioParser, &memory));
-    root->add(new SelectTrybe(&lcd, &radioParser, &memory));
+    root->add(new SelectMode(&lcd, &radioParser, &memory));
     root->add(CreateMeasurementsPIDScreenDirectory(root, &lcd, &radioParser, &memory, Drivers::timerCounts));
     root->add(new PrintRadioData(&lcd, &radio, &radioParser));
     root->add(new SetAngleOffset(&lcd, &radioParser, &memory));

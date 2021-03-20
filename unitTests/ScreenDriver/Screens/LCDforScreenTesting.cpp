@@ -111,7 +111,7 @@ bool ScreenMemory::readDMA(uint16_t addr, uint8_t* data, uint16_t dataSize, bool
 }
 
 ScreenRadioParser::ScreenRadioParser():
-    Drivers::RadioParser(&test_radio, Drivers::RadioTrybe::RemoteControl),
+    Drivers::RadioParser(&test_radio, Drivers::RadioMode::RemoteControl),
     dataIn(test_radio.dataIn),
     dataOut(test_radio.dataOut){}
 

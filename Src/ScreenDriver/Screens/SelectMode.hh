@@ -7,7 +7,7 @@
 
 /*
 Interface of radio data:
-	Main option = 1 - selecting trybe.
+	Main option = 1 - selecting mode.
 	Main value (converted to uint8):
 		0 - casual fly mode.
 		1 - tuning mode of axis X.
@@ -26,17 +26,17 @@ Interface of radio data:
 		14 - fly mode with altitude measurement
 */
 
-class SelectTrybe : public ScreenCellIfc{
+class SelectMode : public ScreenCellIfc{
 public:
-	enum trybeID{
-		casualFlyTrybe = 0,
-		tuningAxisXTrybe,
-		tuningAxisYTrybe,
+	enum modeID{
+		casualFlyMode = 0,
+		tuningAxisXMode,
+		tuningAxisYMode,
 		pidForAxisX,
 		pidForAxisY,
 		recognizeEngines
 	};
-    SelectTrybe(LCD_ifc* const _lcd, Drivers::RadioParser* _radio, Drivers::Memory* _memory);
+    SelectMode(LCD_ifc* const _lcd, Drivers::RadioParser* _radio, Drivers::Memory* _memory);
     const uint8_t* getName() const final;
 	uint8_t getNameSize() const final;
 	void print() final;
@@ -45,11 +45,11 @@ public:
 	void change() final{}
 	void increment() final;
 	void decrement() final;
-	uint8_t getTrybe();
-	static constexpr unsigned int trybesSize = {16};
+	uint8_t getMode();
+	static constexpr unsigned int modesSize = {16};
 protected:
-	static constexpr char name[]{"Select trybe"};
-	static constexpr uint8_t trybesNames[trybesSize][13]{
+	static constexpr char name[]{"Select mode"};
+	static constexpr uint8_t modesNames[modesSize][13]{
 		"default fly ",
 		"tune axis X ",
 		"tune axis Y ",
@@ -68,7 +68,7 @@ protected:
 		" fly auto H "};
 	Drivers::RadioParser* radio;
 	Drivers::Memory* memory;
-	uint8_t trybe;
-	uint8_t pointedTrybe;
+	uint8_t mode;
+	uint8_t pointedMode;
 	bool changed;
 };
